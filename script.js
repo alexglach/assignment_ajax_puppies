@@ -22,7 +22,23 @@ LISTENER = {
       var puppyInfo = VIEW.submitPuppyInfo();
       REQUEST.post(puppyInfo);
     });
+  },
+
+  addAdopt: function(){
+    $('#puppy-list').on("click", "a", function(event){
+      $puppyId = $(this).attr("data-id");
+      REQUEST.delete($puppyId);
+    });
   }
+}
+
+STATUS = {
+
+  $(document).ajaxStart(function(){
+    $('#alert').html("Waiting...").addClass('waiting');
+  })
+
+
 }
 
 
@@ -35,14 +51,44 @@ REQUEST = {
   },
 
   post: function(puppyInfo) {
-    $.post("https://ajax-puppies.herokuapp.com/puppies.json", puppyInfo, null, "json")
+    var options = {
+      url: "https://ajax-puppies.herokuapp.com/puppies.json",
+      method: "POST",
+      data: JSON.stringify(puppyInfo),
+      dataType: "json",
+      contentType: 'application/json',
+      success: function(){
+        $('#refresh-puppies').trigger('click');
+      }
+    }
+    $.ajax(options);
+  },
+
+  delete: function(puppyId) {
+    var options = {
+      url: "https://ajax-puppies.herokuapp.com/puppies/"+ puppyId + ".json",
+      type: "DELETE",
+      dataType: "json",
+      contentType: 'application/json',
+      success: function(){
+        $('#refresh-puppies').trigger('click');
+      }
+    }
+    $.ajax(options);
   }
 }
 
 
 VIEW = {
   submitPuppyInfo: function() {
-    return $('form').serialize();
+    var name = $('#puppy-name').val();
+    var breed_id = $('#breed').val();
+    return {
+      puppy: {
+        name: name,
+        breed_id: breed_id
+      }
+    }
   },
 
   updatePuppyList: function(puppyList) {
@@ -66,4 +112,5 @@ VIEW = {
 $('document').ready(function() {
   LISTENER.addRefresh();
   LISTENER.addPost();
+  LISTENER.addAdopt();
 });

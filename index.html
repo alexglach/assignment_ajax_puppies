@@ -8,20 +8,21 @@
 </head>
 
 <body>
+    <div id="alert"></div>
     <h1>The AJAX Puppy Shelter</h1>
     <h2>Register a new Puppy</h2>
     <h4>Name</h4>
     <form class="puppy-input">
-        <input type="text" name="puppy-name" id="puppy-name">
+        <input type="text" name="name" id="puppy-name">
         <h4>Breed</h4>
-        <select id="breed" name="breed">
-          <option>Poodle</option>
-          <option>Labarador</option>
-          <option>Golden Retriever</option>
-          <option>Golden Adrian</option>
-          <option>Shephard</option>
-          <option>Korgi</option>
-          <option>Bulldog</option>
+        <select id="breed" name="breed_id">
+          <option value="1">Poodle</option>
+          <option value="2">Labarador</option>
+          <option value="3">Golden Retriever</option>
+          <option value="4">Golden Adrian</option>
+          <option value="5">Shephard</option>
+          <option value="6">Korgi</option>
+          <option value="7">Bulldog</option>
         </select>
         <input id="submit-puppy" type="submit" value="REGISTER PUPPY!">
     </form>
