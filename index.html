@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script src="script.js"></script>
-  <title>Puppies!</title>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="script.js"></script>
+    <title>Puppies!</title>
 </head>
+
 <body>
-  <h1>The AJAX Puppy Shelter</h1>
-  <h2>Register a new Puppy</h2>
-  <h4>Name</h4>
-  <input type="text" id="puppy-name">
-  <h4>Breed</h4>
-  <select id="breed" name="breed"></select>
-  <input type="submit" value="REGISTER PUPPY!">
-  <h1>Our puppies:</h1>
-  <a href=# id="refresh-puppies">Refresh puppies list</a>
-  <ul id="puppy-list">
-  </ul>
+    <h1>The AJAX Puppy Shelter</h1>
+    <h2>Register a new Puppy</h2>
+    <h4>Name</h4>
+    <form class="puppy-input">
+        <input type="text" name="puppy-name" id="puppy-name">
+        <h4>Breed</h4>
+        <select id="breed" name="breed">
+          <option>Poodle</option>
+          <option>Labarador</option>
+          <option>Golden Retriever</option>
+          <option>Golden Adrian</option>
+          <option>Shephard</option>
+          <option>Korgi</option>
+          <option>Bulldog</option>
+        </select>
+        <input id="submit-puppy" type="submit" value="REGISTER PUPPY!">
+    </form>
+    <h1>Our puppies:</h1>
+    <a href=# id="refresh-puppies">Refresh puppies list</a>
+    <ul id="puppy-list">
+    </ul>
 
 </body>
+
 </html>
