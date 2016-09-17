@@ -24,22 +24,25 @@ LISTENER = {
     });
   },
 
-  addAdopt: function(){
-    $('#puppy-list').on("click", "a", function(event){
+  addAdopt: function() {
+    $('#puppy-list').on("click", "a", function(event) {
       $puppyId = $(this).attr("data-id");
       REQUEST.delete($puppyId);
     });
   }
 }
 
-STATUS = {
-
-  $(document).ajaxStart(function(){
-    $('#alert').html("Waiting...").addClass('waiting');
-  })
 
 
-}
+
+$(document).ajaxStart(function() {
+  $('#alert').html("Waiting...").addClass('waiting');
+})
+
+
+$(document).ajaxSuccess(function() {
+  $('#alert').removeClass('waiting').html("Finished!").addClass('finished').fadeOut( 2000 );
+});
 
 
 
@@ -57,7 +60,7 @@ REQUEST = {
       data: JSON.stringify(puppyInfo),
       dataType: "json",
       contentType: 'application/json',
-      success: function(){
+      success: function() {
         $('#refresh-puppies').trigger('click');
       }
     }
@@ -66,11 +69,11 @@ REQUEST = {
 
   delete: function(puppyId) {
     var options = {
-      url: "https://ajax-puppies.herokuapp.com/puppies/"+ puppyId + ".json",
+      url: "https://ajax-puppies.herokuapp.com/puppies/" + puppyId + ".json",
       type: "DELETE",
       dataType: "json",
       contentType: 'application/json',
-      success: function(){
+      success: function() {
         $('#refresh-puppies').trigger('click');
       }
     }
